@@ -1,0 +1,9 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.types import *
+
+spark = SparkSession.builder.master('local').appName('sales').getOrCreate()
+path = "C:/Users/welcome/Downloads/myFile0.csv"
+df = spark.read.option('infer schema', True).option('delimiter', ',').csv(path)
+print(df)
+print(type(df))
+df.show()
